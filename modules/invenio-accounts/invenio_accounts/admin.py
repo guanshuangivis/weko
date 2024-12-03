@@ -82,6 +82,7 @@ class UserView(ModelView):
     def on_model_change(self, form, User, is_created):
         """Hash password when saving."""
         if form.password.data is not None:
+            print("=====================guan.shuang on_model_change===========================")
             pwd_ctx = current_app.extensions['security'].pwd_context
             if pwd_ctx.identify(form.password.data) is None:
                 User.password = hash_password(form.password.data)
@@ -89,6 +90,7 @@ class UserView(ModelView):
     def after_model_change(self, form, User, is_created):
         """Send password instructions if desired."""
         if is_created and form.notification.data is True:
+            print("=====================guan.shuang after_model_change===========================")
             send_reset_password_instructions(User)
 
     @action('inactivate', _('Inactivate'),
@@ -97,6 +99,7 @@ class UserView(ModelView):
     def action_inactivate(self, ids):
         """Inactivate users."""
         try:
+            print("=====================guan.shuang action_inactivate===========================")
             count = 0
             for user_id in ids:
                 user = _datastore.get_user(user_id)
@@ -120,6 +123,7 @@ class UserView(ModelView):
     def action_activate(self, ids):
         """Inactivate users."""
         try:
+            print("=====================guan.shuang action_activate===========================")
             count = 0
             for user_id in ids:
                 user = _datastore.get_user(user_id)
@@ -142,16 +146,19 @@ class UserView(ModelView):
     @property
     def can_create(self):
         """Check permission for creating."""
+        print("=====================guan.shuang can_create===========================")
         return self._system_role in [role.name for role in current_user.roles]
 
     @property
     def can_edit(self):
         """Check permission for Editing."""
+        print("=====================guan.shuang can_edit===========================")
         return self._system_role in [role.name for role in current_user.roles]
 
     @property
     def can_delete(self):
         """Check permission for Deleting."""
+        print("=====================guan.shuang can_delete===========================")
         return self._system_role in [role.name for role in current_user.roles]
 
 
@@ -238,6 +245,7 @@ class SessionActivityView(ModelView):
     def delete_model(self, model):
         """Delete a specific session."""
         try:
+            print("===========SessionActivityView delete_model====================")
             if SessionActivity.is_current(sid_s=model.sid_s):
                 flash('You could not remove your current session', 'error')
                 return
@@ -252,6 +260,7 @@ class SessionActivityView(ModelView):
     def action_delete(self, ids):
         """Delete selected sessions."""
         try:
+            print("===========SessionActivityView action_delete====================")
             is_current = any(SessionActivity.is_current(sid_s=id_) for id_ in ids)
             if is_current:
                 flash('You could not remove your current session', 'error')

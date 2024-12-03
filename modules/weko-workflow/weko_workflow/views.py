@@ -173,7 +173,7 @@ def index():
             content:
                 text/html
     """
-
+    print("===========guan.shuang workflow index===========")
     if not current_user or not current_user.roles:
         return abort(403)
 
@@ -190,6 +190,7 @@ def index():
             'WEKO_THEME_DEFAULT_COMMUNITY'])
 
     tab = request.args.get('tab',WEKO_WORKFLOW_TODO_TAB)
+
     if 'community' in request.args:
         activities, maxpage, size, pages, name_param = activity \
             .get_activity_list(community_id=request.args.get('community'),
@@ -3383,3 +3384,21 @@ def dbsession_clean(exception):
         except:
             db.session.rollback()
     db.session.remove()
+
+
+@workflow_blueprint.route('/workspace')
+@login_required
+def workspace():
+        
+        print("==========guan.shuang workspace =========")
+        
+        return render_template(
+        'weko_workflow/workspaceItemList.html'
+        # 'weko_workflow/activity_list.html'
+    )
+    # return render_template(
+    #         'weko_workflow/workspaceItemList.html',
+    #         delete_activity_log_enable=current_app.config.get("DELETE_ACTIVITY_LOG_ENABLE"),
+    #         activitylog_roles=current_app.config.get("WEKO_WORKFLOW_ACTIVITYLOG_ROLE_ENABLE"),
+    #     )
+

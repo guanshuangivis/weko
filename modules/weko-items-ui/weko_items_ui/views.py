@@ -1018,6 +1018,7 @@ def ranking():
     # get ranking settings
     settings = RankingSettings.get()
 
+    print("===========guan.shuang top ranking ==========")
     if not settings:
         upd_data = RankingSettings()
         dafault_data = current_app.config['WEKO_ITEMS_UI_RANKING_DEFAULT_SETTINGS']
@@ -1067,6 +1068,7 @@ def check_ranking_show():
     settings = RankingSettings.get()
     if settings and settings.is_show:
         result = ''
+    print("==========guan.shuang return result:========"+result)
     return result
 
 
