@@ -1,0 +1,218 @@
+{#
+# This file is part of WEKO3.
+# Copyright (C) 2017 National Institute of Informatics.
+#
+# WEKO3 is free software; you can redistribute it
+# and/or modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
+#
+# WEKO3 is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with WEKO3; if not, write to the
+# Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+# MA 02111-1307, USA.
+#}
+
+{%- extends config.WEKO_WORKFLOW_BASE_TEMPLATE %}
+{%- from "invenio_communities/macros.html" import community_header %}
+
+{%- block css %}
+{{ super() }}
+{% assets "workflow_datepicker_css" %}
+<link href="{{ ASSET_URL }}" rel="stylesheet">{% endassets %}
+{% assets "workflow_css" %}
+<link href="{{ ASSET_URL }}" rel="stylesheet">{% endassets %}
+{%- endblock css %}
+
+{%- block javascript %}
+{{ super() }}
+{%- assets "workflow_activity_list_js" %}
+<script src="{{ ASSET_URL }}"></script>{% endassets %}
+{% assets "weko_theme_js_widget" %}
+<script src="{{ ASSET_URL }}"></script>{% endassets %}
+{%- endblock javascript %}
+
+{%- block page_body_tabs %}
+{% from "weko_theme/macros/tabs_selector.html" import tabs_selector with context %}
+{{ tabs_selector('workspace',community_id) }}
+{%- endblock page_body_tabs %}
+
+{%- block page_header %}
+{%-if not community %}
+{{ super() }}
+{%- endif %}
+{%- endblock page_header %}
+
+{%- block page_footer %}
+{%-if not community%}
+{{ super() }}
+{%- endif %}
+{%- endblock page_footer %}
+
+{%- block page_body_main %}
+<!-- ワークフローのアクティビティ一覧を参照する。 start -->
+<div class="col-md-offset-2 col-md-10 submit-row">
+  <h1>デフォルト条件設定</h1>
+  <h2>絞り込み条件</h2>
+  <form>
+    <table>
+      <tbody>
+        <tr>
+          <td>リソースタイプ</td>
+          <td>
+            <label>
+              <input type="radio" name="row1" value="option1"> Yes
+            </label>
+          </td>
+          <td>
+            <label>
+              <input type="radio" name="row1" value="option2" checked> No
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>査読有無（リソースタイプ：論文の場合）</td>
+          <td>
+            <label>
+              <input type="radio" name="row2" value="option1"> Yes
+            </label>
+          </td>
+          <td>
+            <label>
+              <input type="radio" name="row2" value="option2"> No
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>論文への関連有無（リソースタイプ：根拠データの場合）</td>
+          <td>
+            <label>
+              <input type="radio" name="row3" value="option1"> Yes
+            </label>
+          </td>
+          <td>
+            <label>
+              <input type="radio" name="row3" value="option2"> No
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>未定</td>
+          <td>
+            <label>
+              <input type="radio" name="row3" value="option1"> Yes
+            </label>
+          </td>
+          <td>
+            <label>
+              <input type="radio" name="row3" value="option2"> No
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>未定</td>
+          <td>
+            <label>
+              <input type="radio" name="row3" value="option1"> Yes
+            </label>
+          </td>
+          <td>
+            <label>
+              <input type="radio" name="row3" value="option2"> No
+            </label>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </form>
+
+  <h2>並べ替え項目</h2>
+  <form>
+    <table>
+      <tbody>
+        <tr>
+          <td>出版日</td>
+          <td>
+            <label>
+              <input type="radio" name="row1" value="option1">asc
+            </label>
+          </td>
+          <td>
+            <label>
+              <input type="radio" name="row1" value="option2">desc
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>アクセス数</td>
+          <td>
+            <label>
+              <input type="radio" name="row2" value="option1">asc
+            </label>
+          </td>
+          <td>
+            <label>
+              <input type="radio" name="row2" value="option2">desc
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>ダウンロード数</td>
+          <td>
+            <label>
+              <input type="radio" name="row3" value="option1">asc
+            </label>
+          </td>
+          <td>
+            <label>
+              <input type="radio" name="row3" value="option2">desc
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>未定</td>
+          <td>
+            <label>
+              <input type="radio" name="row3" value="option1">asc
+            </label>
+          </td>
+          <td>
+            <label>
+              <input type="radio" name="row3" value="option2">desc
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>未定</td>
+          <td>
+            <label>
+              <input type="radio" name="row3" value="option1">asc
+            </label>
+          </td>
+          <td>
+            <label>
+              <input type="radio" name="row3" value="option2">desc
+            </label>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <br>
+
+  <!-- <div class="col-md-offset-2 col-md-10 submit-row"> -->
+    <!-- <div class=""> -->
+      <input type="submit" class="btn btn-primary" value="Save">
+      <input type="button" class="btn btn-danger" onclick="history.back()" value="Cancel">
+      <!-- <a href="/admin/user/" class="btn btn-danger" role="button">Cancel</a> -->
+    <!-- </div> -->
+</div>
+<!-- ワークフローのアクティビティ一覧を参照する。 end -->
+
+{%- endblock page_body_main %}

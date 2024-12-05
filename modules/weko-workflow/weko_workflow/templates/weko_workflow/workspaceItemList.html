@@ -97,7 +97,8 @@
     </li>
 
     <li role="presentation" {%-if tab=='wait' %} class="active" {%- endif%}>
-      <a href="javascript:void(0);" class="activity_tab" data-tab="wait">{{_('デフォルト表示条件設定')}}</a>
+      <!-- <a href="javascript:void(0);" class="activity_tab" data-tab="wait">{{_('デフォルト表示条件設定')}}</a> -->
+      <a href="{{url_for('weko_workflow.workspaceDefaultConditionsSetting')}}" class="activity_tab" data-tab="wait">{{_('デフォルト表示条件設定')}}</a>
     </li>
 
   </ul>

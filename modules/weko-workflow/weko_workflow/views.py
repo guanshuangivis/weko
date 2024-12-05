@@ -3394,11 +3394,15 @@ def workspace():
         
         return render_template(
         'weko_workflow/workspaceItemList.html'
-        # 'weko_workflow/activity_list.html'
     )
-    # return render_template(
-    #         'weko_workflow/workspaceItemList.html',
-    #         delete_activity_log_enable=current_app.config.get("DELETE_ACTIVITY_LOG_ENABLE"),
-    #         activitylog_roles=current_app.config.get("WEKO_WORKFLOW_ACTIVITYLOG_ROLE_ENABLE"),
-    #     )
 
+
+@workflow_blueprint.route('/workspaceDefaultCon')
+@login_required
+def workspaceDefaultConditionsSetting():
+        
+        print("==========guan.shuang workspace workspaceIDefaultCon =========")
+        
+        return render_template(
+        'weko_workflow/workspaceIDefaultCon.html'
+    )
