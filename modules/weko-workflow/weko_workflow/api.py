@@ -1540,6 +1540,15 @@ class WorkActivity(object):
         """
         self_user_id = int(current_user.get_id())
         self_group_ids = [role.id for role in current_user.roles]
+        print("=======guan.shuang def query_activities_by_tab_is_all start")
+        print(self_user_id)
+
+        for test in self_group_ids:
+            print(test)
+        
+        print(is_community_admin)
+        print("=======guan.shuang def query_activities_by_tab_is_all end")
+
         if is_community_admin:
             query = query \
                 .filter(_Activity.activity_login_user.in_(community_user_ids))
@@ -1574,7 +1583,9 @@ class WorkActivity(object):
                     ),
                 )
             )
-
+        print("query start ============")
+        print(query.all())
+        print("query end ============")
         return query
 
     @staticmethod
@@ -1777,7 +1788,7 @@ class WorkActivity(object):
                     continue
             # Append to do and action activities into the master list
             activities.append(activity_data)
-
+        
     @staticmethod
     def __get_community_user_ids():
         """Get community user ids.
@@ -1797,6 +1808,11 @@ class WorkActivity(object):
                     community_users]
             community_user_ids.extend(_tmp)
 
+        # print("community_user_ids loop start")
+        # for test in community_user_ids:
+        #     print(test)
+        # print("community_user_ids loop end")
+        
         return community_user_ids
 
     def get_activity_list(self, community_id=None, conditions=None,
@@ -1822,7 +1838,8 @@ class WorkActivity(object):
             page = 1
 
             activities = []
-
+            print("========guan.shuang get_activity_list start ==========")
+            print(is_admin)
             # query activities
             query_action_activities = self.__common_query_activity_list()
 
@@ -1838,6 +1855,7 @@ class WorkActivity(object):
                     query_action_activities)
             # query activities by tab is all
             elif tab == WEKO_WORKFLOW_ALL_TAB:
+                print("elif tab == WEKO_WORKFLOW_ALL_TAB:")
                 page_all = conditions.get('pagesall')
                 size_all = conditions.get('sizeall')
                 if page_all and page_all[0].isnumeric():
@@ -1845,7 +1863,9 @@ class WorkActivity(object):
                 if size_all and size_all[0].isnumeric():
                     size = size_all[0]
                 if not is_admin:
+                    print("if not is_admin:")
                     community_user_ids = self.__get_community_user_ids()
+                    print(len(community_user_ids))
                     query_action_activities = self \
                         .query_activities_by_tab_is_all(
                             query_action_activities, is_community_admin,
@@ -1888,6 +1908,14 @@ class WorkActivity(object):
                     activities, max_page, name_param, page,
                     query_action_activities, size, tab, is_community_admin, is_get_all
                 )
+            # print("activities start")
+            # print(len(activities))
+            # print(max_page)
+            # print(size)
+            # print(page)
+            # print(name_param)
+            # print("activities end")
+
             return activities, max_page, size, page, name_param
 
     def __get_activity_list_per_page(

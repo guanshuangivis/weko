@@ -11,9 +11,11 @@
             $scope.default_condition_data = [];
 
             $scope.load_delimiter = 50;
+            console.log("=====guan.shuang $scope.searchDetailCtrl===========");
 
             // page init
             $scope.initData = function (data) {
+                console.log("=====guan.shuang $scope.initData===========");
                 json_obj = angular.fromJson(data)
                 db_data = json_obj.condition_setting;
 

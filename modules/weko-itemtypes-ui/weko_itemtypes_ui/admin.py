@@ -542,6 +542,7 @@ class ItemTypePropertiesView(BaseView):
             current_app.logger.debug(ex)
             db.session.rollback()
             return jsonify(msg=_('Failed to save property.'))
+        print("==========guan.shuang Saved property successfully. ==========")
         return jsonify(msg=_('Saved property successfully.'))
 
 

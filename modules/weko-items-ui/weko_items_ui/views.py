@@ -1068,7 +1068,7 @@ def check_ranking_show():
     settings = RankingSettings.get()
     if settings and settings.is_show:
         result = ''
-    print("==========guan.shuang return result:========"+result)
+    # print("==========guan.shuang return result:========"+result)
     return result
 
 

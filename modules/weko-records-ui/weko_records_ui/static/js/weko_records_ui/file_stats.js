@@ -3,6 +3,9 @@ $(document).ready(function () {
     let file_key = ''
     try {
         file_key = document.getElementById("file_key").innerText;
+        // guan.shuang start
+        file_key = "testtest";
+        // guan.shuang emd
     } catch(e) {
         file_key = encodeURIComponent(document.getElementById("file_url").innerText.replaceAll('/', '{URL_SLASH}'));
     }
@@ -24,7 +27,7 @@ $(document).ready(function () {
                     ddlHtml += '<option value=' + data.period[i] + '>' + data.period[i] + '</option>';
                 }
                 ddl.innerHTML = ddlHtml;
-                // country
+                // countrys
                 let tableHtml = '';
                 for (let i in data.country_list) {
                     d = data.country_list[i]

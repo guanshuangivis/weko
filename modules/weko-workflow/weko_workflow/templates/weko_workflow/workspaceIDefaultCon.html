@@ -58,160 +58,194 @@
 <!-- ワークフローのアクティビティ一覧を参照する。 start -->
 <div class="col-md-offset-2 col-md-10 submit-row">
   <h1>デフォルト条件設定</h1>
-  <h2>絞り込み条件</h2>
-  <form>
+
+  <!-- <form method="POST" name="default_conditions_form" action={{url_for('rankingsettings.index')}}> -->
+  <form method="GET" name="default_conditions_form" action="/workflow/workspaceDefaultCon/save">
     <table>
       <tbody>
+        <tr><h2>絞り込み条件</h2></tr>
         <tr>
-          <td>リソースタイプ</td>
+          <th style="text-align: right;">{{_('リソースタイプ')}}</th>
+          <td style="width:5%"></td>
           <td>
-            <label>
-              <input type="radio" name="row1" value="option1"> Yes
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_show" value="True"
+                {{ 'checked' if is_show else '' }}>
+                {{_('On')}}
             </label>
-          </td>
-          <td>
-            <label>
-              <input type="radio" name="row1" value="option2" checked> No
-            </label>
-          </td>
-        </tr>
-        <tr>
-          <td>査読有無（リソースタイプ：論文の場合）</td>
-          <td>
-            <label>
-              <input type="radio" name="row2" value="option1"> Yes
-            </label>
-          </td>
-          <td>
-            <label>
-              <input type="radio" name="row2" value="option2"> No
-            </label>
-          </td>
-        </tr>
-        <tr>
-          <td>論文への関連有無（リソースタイプ：根拠データの場合）</td>
-          <td>
-            <label>
-              <input type="radio" name="row3" value="option1"> Yes
-            </label>
-          </td>
-          <td>
-            <label>
-              <input type="radio" name="row3" value="option2"> No
-            </label>
-          </td>
-        </tr>
-        <tr>
-          <td>未定</td>
-          <td>
-            <label>
-              <input type="radio" name="row3" value="option1"> Yes
-            </label>
-          </td>
-          <td>
-            <label>
-              <input type="radio" name="row3" value="option2"> No
-            </label>
-          </td>
-        </tr>
-        <tr>
-          <td>未定</td>
-          <td>
-            <label>
-              <input type="radio" name="row3" value="option1"> Yes
-            </label>
-          </td>
-          <td>
-            <label>
-              <input type="radio" name="row3" value="option2"> No
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_hide" value="False"
+                {{ 'checked' if not is_show else '' }}>
+                {{_('Off')}}
             </label>
           </td>
         </tr>
 
-      </tbody>
-    </table>
-  </form>
+        <tr>
+          <th style="text-align: right;">{{_('査読有無（リソースタイプ：論文の場合）')}}</th>
+          <td style="width:5%"></td>
+          <td>
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_show" value="True"
+                {{ 'checked' if is_show else '' }}>
+                {{_('On')}}
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_hide" value="False"
+                {{ 'checked' if not is_show else '' }}>
+                {{_('Off')}}
+            </label>
+          </td>
+        </tr>
 
-  <h2>並べ替え項目</h2>
-  <form>
-    <table>
-      <tbody>
         <tr>
-          <td>出版日</td>
+          <th style="text-align: right;">{{_('論文への関連有無（リソースタイプ：根拠データの場合）')}}</th>
+          <td style="width:5%"></td>
           <td>
-            <label>
-              <input type="radio" name="row1" value="option1">asc
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_show" value="True"
+                {{ 'checked' if is_show else '' }}>
+                {{_('On')}}
             </label>
-          </td>
-          <td>
-            <label>
-              <input type="radio" name="row1" value="option2">desc
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_hide" value="False"
+                {{ 'checked' if not is_show else '' }}>
+                {{_('Off')}}
             </label>
           </td>
         </tr>
+
         <tr>
-          <td>アクセス数</td>
+          <th style="text-align: right;">{{_('未定')}}</th>
+          <td style="width:5%"></td>
           <td>
-            <label>
-              <input type="radio" name="row2" value="option1">asc
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_show" value="True"
+                {{ 'checked' if is_show else '' }}>
+                {{_('On')}}
             </label>
-          </td>
-          <td>
-            <label>
-              <input type="radio" name="row2" value="option2">desc
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_hide" value="False"
+                {{ 'checked' if not is_show else '' }}>
+                {{_('Off')}}
             </label>
           </td>
         </tr>
+
         <tr>
-          <td>ダウンロード数</td>
+          <th style="text-align: right;">{{_('未定')}}</th>
+          <td style="width:5%"></td>
           <td>
-            <label>
-              <input type="radio" name="row3" value="option1">asc
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_show" value="True"
+                {{ 'checked' if is_show else '' }}>
+                {{_('On')}}
             </label>
-          </td>
-          <td>
-            <label>
-              <input type="radio" name="row3" value="option2">desc
-            </label>
-          </td>
-        </tr>
-        <tr>
-          <td>未定</td>
-          <td>
-            <label>
-              <input type="radio" name="row3" value="option1">asc
-            </label>
-          </td>
-          <td>
-            <label>
-              <input type="radio" name="row3" value="option2">desc
-            </label>
-          </td>
-        </tr>
-        <tr>
-          <td>未定</td>
-          <td>
-            <label>
-              <input type="radio" name="row3" value="option1">asc
-            </label>
-          </td>
-          <td>
-            <label>
-              <input type="radio" name="row3" value="option2">desc
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_hide" value="False"
+                {{ 'checked' if not is_show else '' }}>
+                {{_('Off')}}
             </label>
           </td>
         </tr>
       </tbody>
     </table>
+    <!-- </form>
+
+    <form> -->
+    <table>
+      <tbody>
+        <tr><h2>並べ替え項目</h2></tr>
+        <tr>
+          <th style="text-align: right;">{{_('出版日')}}</th>
+          <td style="width:5%"></td>
+          <td>
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_show" value="True"
+                {{ 'checked' if is_show else '' }}>
+                {{_('asc')}}
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_hide" value="False"
+                {{ 'checked' if not is_show else '' }}>
+                {{_('desc')}}
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <th style="text-align: right;">{{_('アクセス数')}}</th>
+          <td style="width:5%"></td>
+          <td>
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_show" value="True"
+                {{ 'checked' if is_show else '' }}>
+                {{_('asc')}}
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_hide" value="False"
+                {{ 'checked' if not is_show else '' }}>
+                {{_('desc')}}
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <th style="text-align: right;">{{_('ダウンロード数')}}</th>
+          <td style="width:5%"></td>
+          <td>
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_show" value="True"
+                {{ 'checked' if is_show else '' }}>
+                {{_('asc')}}
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_hide" value="False"
+                {{ 'checked' if not is_show else '' }}>
+                {{_('desc')}}
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <th style="text-align: right;">{{_('未定')}}</th>
+          <td style="width:5%"></td>
+          <td>
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_show" value="True"
+                {{ 'checked' if is_show else '' }}>
+                {{_('asc')}}
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_hide" value="False"
+                {{ 'checked' if not is_show else '' }}>
+                {{_('desc')}}
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <th style="text-align: right;">{{_('未定')}}</th>
+          <td style="width:5%"></td>
+          <td>
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_show" value="True"
+                {{ 'checked' if is_show else '' }}>
+                {{_('asc')}}
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="is_show" id="ranking_hide" value="False"
+                {{ 'checked' if not is_show else '' }}>
+                {{_('desc')}}
+            </label>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <input type="submit" class="btn btn-primary" value="Save">
+    <input type="button" class="btn btn-danger" onclick="history.back()" value="Cancel">
   </form>
   <br>
-
-  <!-- <div class="col-md-offset-2 col-md-10 submit-row"> -->
-    <!-- <div class=""> -->
-      <input type="submit" class="btn btn-primary" value="Save">
-      <input type="button" class="btn btn-danger" onclick="history.back()" value="Cancel">
-      <!-- <a href="/admin/user/" class="btn btn-danger" role="button">Cancel</a> -->
-    <!-- </div> -->
 </div>
 <!-- ワークフローのアクティビティ一覧を参照する。 end -->
 

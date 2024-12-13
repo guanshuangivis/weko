@@ -425,6 +425,7 @@
         <div id="invenio-csl" class="col-sm-3 col-md-3 col-lg-3 col-right">
           <!-- start demo block -->
           {%- include "weko_records_ui/box/stats.html" %}
+          <p>===guan.shuang test ===</p>
           {%- if files | selectattr('is_thumbnail', 'equalto', False)| list | length > 0 -%}
             {% if not record.hide_file %}
               {% if (accessRight == 'open access' or accessRight=='オープンアクセス') and config.WEKO_RECORDS_UI_DISPLAY_ONLINE_ANALYSIS_FLG %}
@@ -432,15 +433,19 @@
               {% endif %}
             {% endif %}
           {% endif %}
-		  {% if config.WEKO_RECORDS_UI_DISPLAY_VERSION_BOX_FLG %}
-             {%- include "weko_records_ui/box/versions.html" %}
-		  {% endif %}
+
+          {% if config.WEKO_RECORDS_UI_DISPLAY_VERSION_BOX_FLG %}
+                {%- include "weko_records_ui/box/versions.html" %}
+          {% endif %}
+
           {% if config.WEKO_RECORDS_UI_DISPLAY_SHARE_BOX_FLG %}
               {%- include "weko_records_ui/box/share.html" %}
           {% endif %}
-		  {% if config.WEKO_RECORDS_UI_DISPLAY_EXPORT_BOX_FLG %}
-              {%- include "weko_records_ui/box/export.html" %}
-		  {% endif %}
+
+          {% if config.WEKO_RECORDS_UI_DISPLAY_EXPORT_BOX_FLG %}
+                  {%- include "weko_records_ui/box/export.html" %}
+          {% endif %}
+
           <!-- end demo block -->
         </div>
       </div>

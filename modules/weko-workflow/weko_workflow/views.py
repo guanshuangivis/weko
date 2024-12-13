@@ -200,6 +200,7 @@ def index():
         if comm is not None:
             community_id = comm.id
     else:
+        print("=========guan.shuang activity.get_activity_list===========")
         activities, maxpage, size, pages, name_param = activity \
             .get_activity_list(conditions=conditions)
 
@@ -242,6 +243,16 @@ def index():
             has_admin_role = True
             break
     send_mail = has_admin_role and send_mail
+
+    print("activities start")
+    for ac in activities:
+        print(ac.title)
+        print(ac.StatusDesc)
+    print("activities end")
+
+    # print("columns start")
+    # print(columns)
+    # print("columns end")
 
     return render_template(
         'weko_workflow/activity_list.html',
@@ -3405,4 +3416,14 @@ def workspaceDefaultConditionsSetting():
         
         return render_template(
         'weko_workflow/workspaceIDefaultCon.html'
+    )
+
+@workflow_blueprint.route('/workspaceDefaultCon/save')
+@login_required
+def workspaceDefaultConditionsSettingResult():
+        
+        print("==========guan.shuang workspace workspaceIDefaultCon save =========")
+        
+        return render_template(
+        'weko_workflow/workspaceDefaultCon_result.html'
     )

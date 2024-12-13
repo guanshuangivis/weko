@@ -83,6 +83,7 @@ blueprint_api = Blueprint(
 @check_index_access_permissions
 def search():
     """Index Search page ui."""
+    print("================guan.shuang item list search ===================")
     search_type = request.args.get("search_type", WEKO_SEARCH_TYPE_DICT["FULL_TEXT"])
     get_args = request.args
     community_id = ""

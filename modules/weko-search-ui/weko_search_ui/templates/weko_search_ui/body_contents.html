@@ -131,7 +131,7 @@
             <button type="button" class="btn btn-primary hide">{{_('Execution')}}</button>
             {%- if not item_export and allow_item_exporting %}
               <a href="{{ url_for('weko_items_ui.export', **request.args) }}" class="btn btn-primary">
-                <i class="fa fa-download"></i> {{ _('Export') }}
+                <i class="fa fa-download"></i> {{ _('Export-----------guan.shuang') }}
               </a>
             {%- endif %}
             <div class="pull-right">
@@ -195,7 +195,6 @@
             </div>
           </div>
           <div class="panel-group m-top-5">
-  
                 <div class="row row-10">
                   {%- block search_item_result %}
                     <div class="col-xs-12 col-md-12">
@@ -211,15 +210,19 @@
                          message="{{ _('Loading...') }}">
                         </invenio-search-loading>
                       {%- endblock search_loading %}
+
+                      <p> ======= guan.shuang ===========</p>
+                      <p>{{index_display_format}}</p>
+
                       {%- block search_results %}
                         {%- if index_display_format == '1' %}
-                        <invenio-search-results
-                         template="{{ url_for('static', filename=(custom_results_template or config.SEARCH_UI_JSTEMPLATE_LIST_RESULTS)) }}">
-                        </invenio-search-results>
+                          <invenio-search-results
+                          template="{{ url_for('static', filename=(custom_results_template or config.SEARCH_UI_JSTEMPLATE_LIST_RESULTS)) }}">
+                          </invenio-search-results>
                         {% else %}
-                        <invenio-search-results
-                         template="{{ url_for('static', filename=(custom_results_template or config.SEARCH_UI_JSTEMPLATE_TABLE_RESULTS)) }}">
-                        </invenio-search-results>
+                          <invenio-search-results
+                          template="{{ url_for('static', filename=(custom_results_template or config.SEARCH_UI_JSTEMPLATE_TABLE_RESULTS)) }}">
+                          </invenio-search-results>
                         {%- endif %}
                       {%- endblock search_results %}
                     </div>
