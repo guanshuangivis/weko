@@ -113,8 +113,10 @@
       {% endif %}
     </div>
     {% endif %}
-    <div {% if (display_index_tree or (current_user.is_authenticated and config.WEKO_SHOW_INDEX_FOR_AUTHENTICATED_USER)) or display_facet_search %}class="col-sm-{{12-width|int}} col-md-{{12-width|int}} col-lg-{{12-width|int}}"{% else %}class="col-sm-12 col-md-12 col-lg-12"{% endif %}>
+    <div id="guan.shuang_bodyContents" {% if (display_index_tree or (current_user.is_authenticated and config.WEKO_SHOW_INDEX_FOR_AUTHENTICATED_USER)) or display_facet_search %}class="col-sm-{{12-width|int}} col-md-{{12-width|int}} col-lg-{{12-width|int}}"{% else %}class="col-sm-12 col-md-12 col-lg-12"{% endif %}>
+      <p>=====guan.shuang body_contents.html =====</p>
       {% include "weko_search_ui/body_contents.html" %}
+      <p>=====guan.shuang body_contents.html =====</p>
     </div>
   </div>
 {%- endblock page_body_main %}

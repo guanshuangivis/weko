@@ -88,7 +88,7 @@
     {%- block search_index_results %}
     {% if display_index_tree or (current_user.is_authenticated and config.WEKO_SHOW_INDEX_FOR_AUTHENTICATED_USER) %}
     <div id="body_indexlist">
-  
+      <p>====guan.shuang body_indexlist=====</p>
     <invenio-search-results
      template="{{ url_for('static', filename=config.WEKO_SEARCH_UI_JSTEMPLATE_INDEX) }}">
     </invenio-search-results>
@@ -102,6 +102,7 @@
           {%- if item_export %}
             {{_('Items to Export')}}
           {%- elif index_id %}
+            <p>====guan.shuang item lists =====</p>
             {{_('Item Lists')}}
           {%- else %}
             {{_('Search Results')}}
@@ -211,15 +212,16 @@
                         </invenio-search-loading>
                       {%- endblock search_loading %}
 
-                      <p> ======= guan.shuang ===========</p>
+                      <p> ======= guan.shuang index_display_format ===========</p>
                       <p>{{index_display_format}}</p>
 
                       {%- block search_results %}
                         {%- if index_display_format == '1' %}
-                          <invenio-search-results
-                          template="{{ url_for('static', filename=(custom_results_template or config.SEARCH_UI_JSTEMPLATE_LIST_RESULTS)) }}">
-                          </invenio-search-results>
+                        <p>==== guan.shuang config.SEARCH_UI_JSTEMPLATE_LIST_RESULTS =====</p>
+                        <p>{{config.SEARCH_UI_JSTEMPLATE_LIST_RESULTS}}</p>
+                          <invenio-search-results template="{{ url_for('static', filename=(custom_results_template or config.SEARCH_UI_JSTEMPLATE_LIST_RESULTS)) }}"> </invenio-search-results>
                         {% else %}
+                        <p>==== guan.shuang config.SEARCH_UI_JSTEMPLATE_TABLE_RESULTS =====</p>
                           <invenio-search-results
                           template="{{ url_for('static', filename=(custom_results_template or config.SEARCH_UI_JSTEMPLATE_TABLE_RESULTS)) }}">
                           </invenio-search-results>

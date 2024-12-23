@@ -24,14 +24,8 @@
   <link href="{{ url_for('static', filename='css/highlight.js/monokai-sublime.min.css') }}" rel="stylesheet">
 {% endblock %}
 
-<p>{{render_widgets}}</p>
-{%- if render_widgets %}
-  <footer-fix id="footer" class="widget-footer">
-    {% include "weko_theme/footer_wysiwyg.html" %}
-  </footer-fix>
-{%- endif %}
-<footer id="footer"{%- if render_widgets %}style="display: None;"{%- endif %}>
-  {% include "weko_theme/footer_wysiwyg.html" %}
+<footer id="footer">
+  {% include "weko_workflow/workspace_footer_wysiwyg.html" %}
 </footer>
 
 {% block tail %}

@@ -39,32 +39,32 @@
           <pre class="hide">{{record.metadata._comment}}</pre>
 
           <span ng-repeat="comment in record.metadata._comment track by $index"> {{ comment|escapeTitle }} <br> </span>
-<!--
-              <div class="pull-right">
-                <ul class="list-inline">
-                  <li ng-show="record.metadata.creator">
-                    <a ng-click="showAuthors=!showAuthors">
-                      {{ showAuthors ? 'Hide authors' : 'Show authors' }}
-                    </a>
-                  </li>
-                  <li>
-                    <a ng-click="showSource=!showSource">
-                      {{ showSource ? 'Hide source' : 'Show source' }}
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div ng-hide="!showAuthors">
-                <ul>
-                  <div ng-repeat='author in record.metadata.creator'>
-                    <li>{{ author|escapeAuthor }}</li>
-                  </div>
-                </ul>
-              </div>
-              <div ng-hide="!showSource">
-                <pre class="pre-scrollable">{{ record | json }}</pre>
-              </div>
-              -->
+            <!--
+                          <div class="pull-right">
+                            <ul class="list-inline">
+                              <li ng-show="record.metadata.creator">
+                                <a ng-click="showAuthors=!showAuthors">
+                                  {{ showAuthors ? 'Hide authors' : 'Show authors' }}
+                                </a>
+                              </li>
+                              <li>
+                                <a ng-click="showSource=!showSource">
+                                  {{ showSource ? 'Hide source' : 'Show source' }}
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div ng-hide="!showAuthors">
+                            <ul>
+                              <div ng-repeat='author in record.metadata.creator'>
+                                <li>{{ author|escapeAuthor }}</li>
+                              </div>
+                            </ul>
+                          </div>
+                          <div ng-hide="!showSource">
+                            <pre class="pre-scrollable">{{ record | json }}</pre>
+                          </div>
+                          -->
           <div class="row">
             <!-- 小型携帯用ディスプレイ -->
             <div class="visible-xs-block">

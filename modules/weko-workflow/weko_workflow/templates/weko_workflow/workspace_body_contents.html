@@ -1,0 +1,187 @@
+{#
+# This file is part of WEKO3.
+# Copyright (C) 2017 National Institute of Informatics.
+#
+# WEKO3 is free software; you can redistribute it
+# and/or modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
+#
+# WEKO3 is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with WEKO3; if not, write to the
+# Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+# MA 02111-1307, USA.
+#}
+
+{%- set is_permission = is_permission or False -%}
+<label for="is_permission" hidden>{{_('is_permission')}}</label>
+<input type="text" value="{{is_permission}}" id="is_permission" style="display: none;">
+{%- set is_login = is_login or False -%}
+<label for="is_login" hidden>{{_('is_login')}}</label>
+<input type="text" value="{{is_login}}" id="is_login" style="display: none;">
+
+<div id="invenio-search">
+    <div id="search_res" ng-controller="searchResCtrl">
+      <div class="panel panel-default" ng-if="typeIndexList() != 'root'">
+
+        <!-- サブメニュー -->
+        <div role="navigation">
+          <ul class="nav nav-tabs">
+            <li role="presentation" {%-if tab=='todo' %} class="active" {%- endif%}>
+              <a href="javascript:void(0);" class="activity_tab" data-tab="todo">{{_('アイテム一覧')}}</a>
+            </li>
+            <li class="dropdown">
+              <a id="toggleButton" class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)"
+              aria-expanded="false">{{_('絞り込み表示')}}<strong class="caret"></strong></a>
+            </li>
+          </ul>
+        </div>
+        <br>
+
+        <div id="search-result-body" class="panel-body">
+          <div id="index_item_list" ng-if="vm.invenioSearchResults.hits.total">
+            <div class="form-inline flow-root">
+              <label for="goExportORPrint" hidden>{{_(goExportORPrint)}}</label>
+              <select class="form-control hide" id="goExportORPrint">
+                <option value="check_Export">{{_('Export Checked Items')}}</option>
+                <option value="view_Export">{{_('Export All Displayed Items')}}</option>
+                <option value="all_Export">{{_('Export All Items Of This Index')}}</option>
+                <option value="check_print">{{_('Print Checked Items')}}</option>
+                <option value="view_print">{{_('Print All Displayed Items')}}</option>
+                <option value="all_print">{{_('Print All Items Of This Index')}}</option>
+              </select>
+              <button type="button" class="btn btn-primary hide">{{_('Execution')}}</button>
+              {%- if not item_export and allow_item_exporting %}
+              <a href="{{ url_for('weko_items_ui.export', **request.args) }}" class="btn btn-primary">
+                <i class="fa fa-download"></i> {{ _('Export-----------guan.shuang') }}
+              </a>
+              {%- endif %}
+
+              <div class="pull-right">
+                <!-- <div class="form-group hide"> -->
+                <div class="form-group">
+                  <!-- <label for="sort_item">{{_('Display Order')}}</label> -->
+                  <select class="form-control" id="sort_item">
+                    <option value="1" selected="selected">{{_('雑誌名')}}</option>
+                    <option value="2">{{_('タイトル')}}</option>
+                    <option value="3">{{_('公開日')}}</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <select class="form-control" >
+                    <option value="1">asc</option>
+                    <option value="2">desc</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <!-- <label for="size">{{_('Display Number')}}</label> -->
+                  <select class="form-control" >
+                    <option value="1">20</option>
+                    <option value="2">50</option>
+                    <option value="3">100</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel-group m-top-5">
+              <div class="row row-10">
+                <div class="col-xs-12 col-md-12">
+                  <!-- <h1>item list paga body</h1> -->
+                  <div class="panel panel-default panel-default-2" ng-repeat="">
+                    <!-- panel-body test001-->
+                    <div class="panel-body" style="display: flex; justify-content: center;">
+                      <table cellspacing="0" cellpadding="0" border="0" width="50%">
+                        <tr>
+                          <td>★</td>
+                          <td>
+                            <a target="_self" href="javascript:void(0)"></a>
+                            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>アイテムタイトル001</a>
+                          </td>
+                          <td>アクセス数1000</td>
+                          <td></td>
+                          <td>⚙歯車</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>著者</td>
+                          <td>DL1000</td>
+                          <td>処理済み</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>雑誌名/会議名　巻(号) 　年月日</td>
+                          <td>DB1000</td>
+                          <td>mail</td>
+                          <td></td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="panel panel-default panel-default-2" ng-repeat="">
+                    <!-- panel-body test001-->
+                    <div class="panel-body" style="display: flex; justify-content: center;">
+                      <table cellspacing="0" cellpadding="0" border="0" width="50%">
+                        <tr>
+                          <td>☆</td>
+                          <td>
+                            <a target="_self" href="javascript:void(0)"></a>
+                            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>アイテムタイトル002</a>
+                          </td>
+                          <td>アクセス数1000</td>
+                          <td></td>
+                          <td>⚙歯車</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>著者</td>
+                          <td>DL1000</td>
+                          <td>処理済み</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td>雑誌名/会議名　巻(号) 　年月日</td>
+                          <td>DB1000</td>
+                          <td>mail</td>
+                          <td></td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <ul class="pagination">
+              <li>
+                <a href="javascript:void(0)" class="get-pages" data-pages="">&lt;</a>
+              </li>
+    
+              <li>
+                <a href="javascript:void(0)" class="get-pages" data-pages="">1</a>
+              </li>
+    
+              <li>
+                <a href="javascript:void(0)" class="get-pages" data-pages="">&gt;</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+</div>

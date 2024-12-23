@@ -3404,7 +3404,8 @@ def workspace():
         print("==========guan.shuang workspace =========")
         
         return render_template(
-        'weko_workflow/workspaceItemList.html'
+        # 'weko_workflow/workspaceItemList.html'
+        'weko_workflow/workspace_base.html'
     )
 
 

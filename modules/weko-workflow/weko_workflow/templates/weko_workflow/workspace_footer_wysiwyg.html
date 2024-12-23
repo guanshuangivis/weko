@@ -18,21 +18,14 @@
 # MA 02111-1307, USA.
 #}
 
-{% block css %}
-  <link href="{{ url_for('static', filename='css/weko_admin/quill.snow.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='css/KaTeX/katex.min.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='css/highlight.js/monokai-sublime.min.css') }}" rel="stylesheet">
-{% endblock %}
-
-<p>{{render_widgets}}</p>
-{%- if render_widgets %}
-  <footer-fix id="footer" class="widget-footer">
-    {% include "weko_theme/footer_wysiwyg.html" %}
-  </footer-fix>
-{%- endif %}
-<footer id="footer"{%- if render_widgets %}style="display: None;"{%- endif %}>
-  {% include "weko_theme/footer_wysiwyg.html" %}
-</footer>
-
-{% block tail %}
-{% endblock %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12"><hr /></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 text-center-xs">
+      {% trans link="https://github.com/RCOSDP/weko" %}<p>Powered by <a href="{{link}}">WEKO3</a><p>{% endtrans %}
+      <a class="button is-success" onclick="return klaro.show();">Change consent settings</a>
+    </div>
+  </div>
+</div>

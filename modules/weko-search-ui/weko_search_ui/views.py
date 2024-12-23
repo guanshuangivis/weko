@@ -282,6 +282,7 @@ def search():
         )
         ctx.update({"display_community": display_community})
 
+
         return render_template(
             current_app.config["SEARCH_UI_SEARCH_TEMPLATE"],
             page=page,
