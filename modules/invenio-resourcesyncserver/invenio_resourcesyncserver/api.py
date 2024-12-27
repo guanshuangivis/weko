@@ -951,6 +951,7 @@ class ChangeListHandler(object):
                 prev_record = WekoRecord.get_record(
                     id_=prev_record_pid.object_uuid
                 )
+                print("====guan.shuang WekoRecord.get_record =====")
             else:
                 prev_record = None
             if current_record:

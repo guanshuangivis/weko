@@ -244,11 +244,11 @@ def index():
             break
     send_mail = has_admin_role and send_mail
 
-    print("activities start")
-    for ac in activities:
-        print(ac.title)
-        print(ac.StatusDesc)
-    print("activities end")
+    # print("activities start")
+    # for ac in activities:
+    #     print(ac.title)
+    #     print(ac.StatusDesc)
+    # print("activities end")
 
     # print("columns start")
     # print(columns)

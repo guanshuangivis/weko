@@ -37,6 +37,11 @@ class RecordBase(dict):
         :param model: :class:`~invenio_records.models.RecordMetadata` instance.
         """
         self.model = model
+        # print(111111111111111111111111111111111111111111111111111)
+        # print(data)
+        # print(3333333333333333333333333333333333333333333333333333)
+        # print(model)
+        # print(222222222222222222222222222222222222222222222222222)
         super(RecordBase, self).__init__(data or {})
 
     @property
@@ -199,6 +204,7 @@ class Record(RecordBase):
         :param with_deleted: If `True` then it includes deleted records.
         :returns: The :class:`Record` instance.
         """
+        # print(id_)
         with db.session.no_autoflush:
             query = cls.model_cls.query.filter_by(id=id_)
             if not with_deleted:

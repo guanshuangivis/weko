@@ -383,6 +383,11 @@ def check_publish_status(record):
     from .utils import is_future
     pst = record.get('publish_status')
     pdt = record.get('pubdate', {}).get('attribute_value')
+
+    # print("=====guan.shuang check_publish_status =====")
+    # print("publish status: ", pst)
+    # print("publish date: ", pdt)
+    # print("=====guan.shuang check_publish_status =====")
     return pst and '0' in pst and not is_future(pdt)
 
 

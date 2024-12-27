@@ -1763,7 +1763,6 @@ class WorkActivity(object):
                 for comm in comm_list:
                     index_ids += [str(i.cid) for i in Indexes.get_self_list(comm.root_node_id)
                                   if i.cid not in index_ids]
-
         for activity_data, last_update_user, \
             flow_name, action_name, role_name \
                 in action_activities:
@@ -1839,7 +1838,8 @@ class WorkActivity(object):
 
             activities = []
             print("========guan.shuang get_activity_list start ==========")
-            print(is_admin)
+            print("tab:"+tab)
+            # print(is_admin)
             # query activities
             query_action_activities = self.__common_query_activity_list()
 
@@ -1855,17 +1855,19 @@ class WorkActivity(object):
                     query_action_activities)
             # query activities by tab is all
             elif tab == WEKO_WORKFLOW_ALL_TAB:
-                print("elif tab == WEKO_WORKFLOW_ALL_TAB:")
+                # print("elif tab == WEKO_WORKFLOW_ALL_TAB:")
                 page_all = conditions.get('pagesall')
                 size_all = conditions.get('sizeall')
                 if page_all and page_all[0].isnumeric():
                     page = page_all[0]
                 if size_all and size_all[0].isnumeric():
                     size = size_all[0]
+                print("is_admin:")
+                print(is_admin)
                 if not is_admin:
-                    print("if not is_admin:")
+                    # print("if not is_admin:")
                     community_user_ids = self.__get_community_user_ids()
-                    print(len(community_user_ids))
+                    # print(len(community_user_ids))
                     query_action_activities = self \
                         .query_activities_by_tab_is_all(
                             query_action_activities, is_community_admin,
@@ -1903,13 +1905,14 @@ class WorkActivity(object):
             count = query_action_activities.distinct(_Activity.id).count()
             max_page = math.ceil(count / int(size))
             name_param = ''
+
+            # print("1 - activities len:",len(activities))
             if count > 0:
                 name_param, page = self.__get_activity_list_per_page(
                     activities, max_page, name_param, page,
                     query_action_activities, size, tab, is_community_admin, is_get_all
                 )
-            # print("activities start")
-            # print(len(activities))
+            # print("2- activities len:",len(activities))
             # print(max_page)
             # print(size)
             # print(page)
@@ -1938,16 +1941,25 @@ class WorkActivity(object):
             name_param = 'pages' + tab
         offset = int(size) * (int(page) - 1)
         # Get activities
+        # print("1----query_action_activities")
         query_action_activities = query_action_activities \
             .distinct(_Activity.id).order_by(desc(_Activity.id))
+        
+        # print(query_action_activities)
+        # print("2----query_action_activities")
         if not is_get_all:
             query_action_activities = query_action_activities.limit(
                 size).offset(offset)
+        
         action_activities = query_action_activities.all()
+
+        # print("action_activities",action_activities)
+        # print("__get_activity_list_per_page -1- activities len:",len(activities))
         if action_activities:
             # Format activities
             self.__format_activity_data_to_show_on_workflow(
                 activities, action_activities, is_community_admin)
+        # print("__get_activity_list_per_page -2- activities len:",len(activities))
         return name_param, page
 
     def get_all_activity_list(self, community_id=None):

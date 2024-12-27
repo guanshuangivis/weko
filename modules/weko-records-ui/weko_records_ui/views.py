@@ -387,6 +387,25 @@ def default_view_method(pid, record, filename=None, template=None, **kwargs):
                     'item_values': rights_values
                 }
 
+    print("====================guan.shuang default_view_method=============================================")
+    # print("pid:" + pid.pid_value)
+    # print("record id:" + str(record.id))
+    # print("filename:" + ("" if filename is None else filename))
+    # print("template:" + template)
+    # print("kwargs:" + str(kwargs))
+
+    # print("record:" + str(type(record)))
+    # print("---------------------------------")
+    # for attr in dir(record):
+    #     value = getattr(record, attr, None)
+    #     print(f"{attr}: {value}")
+    # print("---------------------------------")
+
+
+
+
+
+
     # Check file permision if request is File Information page.
     file_order = int(request.args.get("file_order", -1))
     if filename:
@@ -681,6 +700,13 @@ def default_view_method(pid, record, filename=None, template=None, **kwargs):
     if file_order >= 0 and files and files[file_order].get('url') and files[file_order]['url'].get('url'):
         file_url = files[file_order]['url']['url']
 
+    
+    # print(template)
+    # print(record)
+    # print(type(record))
+    # print("record.items_show_list")
+    # print(record.items_show_list)
+    print("====================guan.shuang default_view_method=============================================")
     return render_template(
         template,
         pid=pid,

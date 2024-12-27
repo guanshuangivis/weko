@@ -121,7 +121,7 @@ class QueryRecordViewCount(WekoQuery):
         unknown_view = 0
 
         try:
-            print("========guan.shuang QueryRecordViewCount _get_data=============")
+            # print("========guan.shuang QueryRecordViewCount _get_data=============")
 
             if not query_date:
                 params = {'record_id': record_id,
@@ -185,21 +185,21 @@ class QueryRecordViewCount(WekoQuery):
             country=dict(),
             period=list()
         )
-        print("========guan.shuang QueryRecordViewCount get_data=============")
-        print("========guan.shuang QueryRecordViewCount get_data_by_pid_value============= record_id -" + record_id)
-        print(query_date)
-        print(get_period)
+        # print("========guan.shuang QueryRecordViewCount get_data=============")
+        # print("========guan.shuang QueryRecordViewCount get_data_by_pid_value============= record_id -" + record_id)
+        # print(query_date)
+        # print(get_period)
         
         recid = PersistentIdentifier.query.filter_by(
             pid_type='recid',
             object_uuid=record_id).first()
 
-        print("========guan.shuang QueryRecordViewCount get_data PersistentIdentifier className start =============")
-        print(PersistentIdentifier.__tablename__)
-        print("========guan.shuang QueryRecordViewCount get_data PersistentIdentifier count start =============")
-        print(PersistentIdentifier.query.count())
-        print("========guan.shuang QueryRecordViewCount get_data PersistentIdentifier all rec start =============")
-        print(PersistentIdentifier.query.all())
+        # print("========guan.shuang QueryRecordViewCount get_data PersistentIdentifier className start =============")
+        # print(PersistentIdentifier.__tablename__)
+        # print("========guan.shuang QueryRecordViewCount get_data PersistentIdentifier count start =============")
+        # print(PersistentIdentifier.query.count())
+        # print("========guan.shuang QueryRecordViewCount get_data PersistentIdentifier all rec start =============")
+        # print(PersistentIdentifier.query.all())
 
         if recid:
             versioning = PIDVersioning(child=recid)
@@ -219,10 +219,10 @@ class QueryRecordViewCount(WekoQuery):
                 result['total'] = result['total'] + _idx['total']
                 result['period'] = _idx.get('period', [])
 
-        print("======guan.shuang QueryRecordViewCount get_data  resutl start ======")
-        print(result)
-        result['total'] = 10
-        print("======guan.shuang QueryRecordViewCount get_data  resutl end ======")
+        # print("======guan.shuang QueryRecordViewCount get_data  resutl start ======")
+        # print(result)
+        # result['total'] = 10
+        # print("======guan.shuang QueryRecordViewCount get_data  resutl end ======")
 
         return result
 
@@ -233,7 +233,7 @@ class QueryRecordViewCount(WekoQuery):
             country=dict(),
             period=list()
         )
-        print("========guan.shuang QueryRecordViewCount get_data_by_pid_value=============")
+        # print("========guan.shuang QueryRecordViewCount get_data_by_pid_value=============")
 
         recid = PersistentIdentifier.query.filter_by(
             pid_type='recid',
@@ -262,7 +262,7 @@ class QueryRecordViewCount(WekoQuery):
     def get(self, **kwargs):
         """Get total record view count."""
         record_id = kwargs.get('record_id')
-        print("========guan.shuang QueryRecordViewCount get============="+record_id)
+        # print("========guan.shuang QueryRecordViewCount get============="+record_id)
         return self.make_response(self.get_data(record_id, get_period=True))
 
     def post(self, **kwargs):
@@ -393,9 +393,9 @@ class QueryFileStatsCount(WekoQuery):
             result['country_list'] = country_list
             result['period'] = period
             
-        print("========guan.shuang debug========")
-        result['download_total'] = 999
-        print("========guan.shuang debug========")
+        # print("========guan.shuang debug========")
+        # result['download_total'] = 999
+        # print("========guan.shuang debug========")
         
         return result
 

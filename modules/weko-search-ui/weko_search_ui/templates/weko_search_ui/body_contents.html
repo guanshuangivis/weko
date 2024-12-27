@@ -164,6 +164,8 @@
               {%- if index_display_format == '1' %}
                 {%- block search_sort %}
                   {%- set sort_options = sort_option.get(config.SEARCH_UI_SEARCH_INDEX) %}
+                  <!-- <p>set sort_options</p> -->
+                  <!-- <p>{{sort_options}}</p> -->
                   {%- if sort_options %}
                   <div class="form-group">
                     {%- block search_sort_select scoped %}

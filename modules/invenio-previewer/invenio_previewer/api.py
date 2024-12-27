@@ -103,6 +103,7 @@ class PreviewFile(object):
 def convert_to(folder, source):
     """Convert file to pdf."""
     def redirect_detail_page(pid_value):
+        print("===== guan.shuang redirect_detail_page =====")
         return redirect(
             current_app.config[
                 'RECORDS_UI_ENDPOINTS']['recid']['route'].replace(
