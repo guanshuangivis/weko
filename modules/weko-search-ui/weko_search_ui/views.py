@@ -83,7 +83,7 @@ blueprint_api = Blueprint(
 @check_index_access_permissions
 def search():
     """Index Search page ui."""
-    print("================guan.shuang item list search ===================")
+    print("================guan.shuang item list search start===================")
     search_type = request.args.get("search_type", WEKO_SEARCH_TYPE_DICT["FULL_TEXT"])
     get_args = request.args
     community_id = ""
@@ -185,6 +185,7 @@ def search():
             )
         )
         form = FlaskForm(request.form)
+        print("================guan.shuang item list search weko_workflow/activity_detail.html end===================")
         return render_template(
             "weko_workflow/activity_detail.html",
             action_id=action_id,
@@ -282,7 +283,8 @@ def search():
         )
         ctx.update({"display_community": display_community})
 
-
+        print("================guan.shuang item list search current_app.config[SEARCH_UI_SEARCH_TEMPLATE] end===================")
+        print(current_app.config["SEARCH_UI_SEARCH_TEMPLATE"])
         return render_template(
             current_app.config["SEARCH_UI_SEARCH_TEMPLATE"],
             page=page,

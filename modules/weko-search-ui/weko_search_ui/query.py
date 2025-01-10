@@ -136,6 +136,7 @@ def default_search_factory(self, search, query_parser=None, search_type=None):
     :param search_type: Search type. (Default: ``None``)
     :returns: Tuple with search instance and URL arguments.
     """
+    
 
     def _get_search_qs_query(qs=None):
         """Qs of search bar keywords for detail simple search.
@@ -820,6 +821,15 @@ def default_search_factory(self, search, query_parser=None, search_type=None):
     current_app.logger.debug("urlkwargs: {}".format(urlkwargs))
     # MultiDict([('sort', 'relevance'), ('q', Bool(must=[Match(publish_status='0'), Range(publish_date={'lte': 'now/d'}), Terms(path=['1031', '1029', '1025', '952', '953', '943', '940', '1017', '1015', '1011', '881', '893', '872', '869', '758', '753', '742', '530', '533', '502', '494', '710', '702', '691', '315', '351', '288', '281', '759', '754', '744', '531', '534', '503', '495', '711', '704', '692', '316', '352', '289', '282', '773', '771', '767', '538', '539', '519', '510', '756', '745', '733', '337', '377', '308', '299', '2063', '2061', '2057', '1984', '1985', '1975', '1972', '2049', '2047', '2043', '1913', '1925', '1904', '1901', '1790', '1785', '1774', '1562', '1565', '1534', '1526', '1742', '1734', '1723', '1347', '1383', '1320', '1313', '1791', '1786', '1776', '1563', '1566', '1535', '1527', '1743', '1736', '1724', '1348', '1384', '1321', '1314', '1805', '1803', '1799', '1570', '1571', '1551', '1542', '1788', '1777', '1765', '1369', '1409', '1340', '1331', '4127', '4125', '4121', '4048', '4049', '4039', '4036', '4113', '4111', '4107', '3977', '3989', '3968', '3965', '3854', '3849', '3838', '3626', '3629', '3598', '3590', '3806', '3798', '3787', '3411', '3447', '3384', '3377', '3855', '3850', '3840', '3627', '3630', '3599', '3591', '3807', '3800', '3788', '3412', '3448', '3385', '3378', '3869', '3867', '3863', '3634', '3635', '3615', '3606', '3852', '3841', '3829', '3433', '3473', '3404', '3395']), Bool(must=[Match(publish_status='0'), Match(relation_version_is_last='true')])]))])
 
+    # print("=====guan.shuang def default_search_factory(self, search, query_parser=None, search_type=None): start =====")
+    # print("search: {}".format(search))
+    # print("")
+    # print("urlkwargs: {}".format(urlkwargs))
+    # print("=====guan.shuang def default_search_factory(self, search, query_parser=None, search_type=None): end =====")
+    # import traceback
+    # print(11111111111111)
+    # print(traceback.format_stack())
+    # print(222222222222)
     return search, urlkwargs
 
 
@@ -1175,7 +1185,6 @@ def check_permission_user():
 
 weko_search_factory = item_path_search_factory
 es_search_factory = default_search_factory
-
 
 def opensearch_factory(self, search, query_parser=None):
     """Factory for opensearch.

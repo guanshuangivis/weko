@@ -9,7 +9,6 @@
 """REST API resources."""
 
 from __future__ import absolute_import, print_function
-
 import pickle
 import inspect
 import traceback
@@ -141,6 +140,7 @@ def create_blueprint_from_app(app):
     :params app: A Flask application.
     :returns: Configured blueprint.
     """
+
     return create_blueprint(app.config.get('RECORDS_REST_ENDPOINTS'))
 
 

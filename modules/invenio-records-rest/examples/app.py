@@ -180,7 +180,8 @@ search = InvenioSearch(app)
 search.register_mappings('testrecords', 'data')
 InvenioIndexer(app)
 InvenioRecordsREST(app)
-app.register_blueprint(create_blueprint_from_app(app))
+print(22222222222222222)
+# app.register_blueprint(create_blueprint_from_app(app))
 
 # A few documents which will be added in order to make search interesting
 record_examples = [{
